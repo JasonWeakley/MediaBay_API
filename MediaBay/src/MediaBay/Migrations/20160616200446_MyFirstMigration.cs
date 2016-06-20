@@ -114,15 +114,15 @@ namespace MediaBay.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AdminId = table.Column<int>(nullable: false),
-                    Bytes = table.Column<double>(nullable: false),
+                    AdminId = table.Column<int>(nullable: true),
+                    Bytes = table.Column<double>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    GroupId = table.Column<int>(nullable: false),
-                    MediaTypeId = table.Column<int>(nullable: false),
-                    Milliseconds = table.Column<double>(nullable: false),
+                    GroupId = table.Column<int>(nullable: true),
+                    MediaTypeId = table.Column<int>(nullable: true),
+                    Milliseconds = table.Column<double>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    SeriesId = table.Column<int>(nullable: false),
-                    UnitPrice = table.Column<decimal>(nullable: false)
+                    SeriesId = table.Column<int>(nullable: true),
+                    UnitPrice = table.Column<decimal>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -34,11 +34,25 @@ namespace MediaBay
 
             // Add framework services.
             services.AddMvc();
+
+            // Allows me to use the API in a dev environment
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowNewDevelopmentEnvironment",
+                     builder => builder
+                        .AllowAnyOrigin() //allows from anything(including virtual box)
+                        .AllowAnyMethod()
+                        .AllowAnyHeader().WithMethods("DELETE, PUT, POST, GET, OPTIONS"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // allows me to build the project so that I can view it in localhost
+            app.UseCors(builder =>
+            builder.WithOrigins("http://example.com"));
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
