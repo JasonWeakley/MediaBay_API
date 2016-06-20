@@ -8,9 +8,10 @@ using MediaBay.Models;
 namespace MediaBay.Migrations
 {
     [DbContext(typeof(MediaBayContext))]
-    partial class MediaBayContextModelSnapshot : ModelSnapshot
+    [Migration("20160620153942_rebuildtheDB")]
+    partial class rebuildtheDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rc2-20901")

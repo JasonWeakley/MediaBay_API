@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0C9E6B24-E0AB-4884-9D2A-170DDFE41200}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MediaBay", "src\MediaBay\MediaBay.xproj", "{B07A538D-9161-44DC-BA7B-73E1D4FF036E}"
