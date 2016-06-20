@@ -44,7 +44,7 @@ namespace MediaBay.Controllers
             //}
 
             // the _context.NameOfDbContext is Products
-            IQueryable<Product> adminProducts = from p in _context.Products select p;
+            IQueryable<Product> adminProducts = from p in _context.Product select p;
                                           
                                           //select new Product
                                           //{
