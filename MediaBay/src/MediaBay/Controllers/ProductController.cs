@@ -31,9 +31,8 @@ namespace MediaBay.Controllers
 
 
         // GET: api/admin
-        //[HttpGet("{id}", Name = "Product")]
         [HttpGet]
-        public IActionResult GetProduct([FromQuery] int? adminId)
+        public IActionResult Get()
         {
             if (!ModelState.IsValid)
             {
@@ -53,14 +52,27 @@ namespace MediaBay.Controllers
 
         }
 
-        //// GET api/values/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
+        //[HttpGet]
+        //public IActionResult Get([FromQuery]int? GroupId)
         //{
-        //    return "value";
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    IQueryable<InvoiceLine> sales = from il in _context.InvoiceLine
+        //                                    join p in _context.Product
+        //                                    on il.ProductId equals p.ProductId
+        //                                    select new InvoiceLine
+        //                                    {
+        //                                        Name = p.Name,
+        //                                        GroupId = p.GroupId,
+        //                                        UnitPrice = il.UnitPrice
+        //                                    }
+
         //}
 
-        // POST api/values
+        // POST api/product
         [HttpPost]
         public IActionResult Post([FromBody]Product product)
         {
@@ -89,7 +101,7 @@ namespace MediaBay.Controllers
             return CreatedAtRoute("GetProduct", new { id = product.ProductId }, product);
         }
 
-        // PUT api/values/5
+        // PUT api/product/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Product product)
         {
@@ -121,7 +133,7 @@ namespace MediaBay.Controllers
             return new StatusCodeResult(StatusCodes.Status204NoContent);
         }
 
-        // DELETE api/values/5
+        // DELETE api/product/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

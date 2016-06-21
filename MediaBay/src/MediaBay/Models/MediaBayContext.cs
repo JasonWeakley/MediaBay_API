@@ -20,6 +20,6 @@ namespace MediaBay.Models
         //public DbSet<InvoiceLine> InvoiceLines { get; set; }
         //public DbSet<MediaType> MediaTypes { get; set; }
         public DbSet<Product> Product { get; set; }
-        //public DbSet<Series> ProductSeries { get; set; }
+        public DbSet<Series> Series { get; set; }
     }
 }
