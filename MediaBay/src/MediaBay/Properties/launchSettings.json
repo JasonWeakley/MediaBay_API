@@ -19,7 +19,7 @@
     "MediaBay": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/api/admin",
+      "launchUrl": "http://localhost:5000/api/product",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
