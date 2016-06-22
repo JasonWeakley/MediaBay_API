@@ -53,25 +53,24 @@ namespace MediaBay.Controllers
 
         }
 
-        //[HttpGet]
-        //public IActionResult Get([FromQuery]int? GroupId)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        // GET api/product/5
+        [HttpGet("{id}", Name = "GetProduct")]
+        public IActionResult Get(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    IQueryable<InvoiceLine> sales = from il in _context.InvoiceLine
-        //                                    join p in _context.Product
-        //                                    on il.ProductId equals p.ProductId
-        //                                    select new InvoiceLine
-        //                                    {
-        //                                        Name = p.Name,
-        //                                        GroupId = p.GroupId,
-        //                                        UnitPrice = il.UnitPrice
-        //                                    }
+            Product product = _context.Product.Single(m => m.ProductId == id);
 
-        //}
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
 
         // POST api/product
         [EnableCors("AllowNewDevelopmentEnvironment")]
@@ -99,7 +98,7 @@ namespace MediaBay.Controllers
                     throw;
                 }
             }
-
+            // This reroutes you to the view for the product that just got created
             return CreatedAtRoute("GetProduct", new { id = product.ProductId }, product);
         }
 
