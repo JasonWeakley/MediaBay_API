@@ -42,7 +42,7 @@ namespace MediaBay
                      builder => builder
                         .AllowAnyOrigin() //allows from anything(including virtual box)
                         .AllowAnyMethod()
-                        .AllowAnyHeader().WithMethods("DELETE, PUT, POST, GET, OPTIONS"));
+                        .AllowAnyHeader());
             });
         }
 
@@ -50,8 +50,9 @@ namespace MediaBay
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // allows me to build the project so that I can view it in localhost
-            app.UseCors(builder =>
-            builder.WithOrigins("http://example.com"));
+            //app.UseCors(builder =>
+            //builder.WithOrigins("http://example.com"));
+            app.UseCors("AllowAll");
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();

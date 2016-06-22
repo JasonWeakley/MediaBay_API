@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Cors;
 using MediaBay.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling Web API for empty projects, 
 // visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -73,6 +74,7 @@ namespace MediaBay.Controllers
         //}
 
         // POST api/product
+        [EnableCors("AllowNewDevelopmentEnvironment")]
         [HttpPost]
         public IActionResult Post([FromBody]Product product)
         {
