@@ -47,7 +47,27 @@ namespace MediaBay.Controllers
 
         }
 
+        // GET api/series/5
+        [HttpGet("{id}", Name = "GetSeries")]
+        public IActionResult Get(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Series series = _context.Series.Single(m => m.SeriesId == id);
+
+            if (series == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(series);
+        }
+
         // POST api/series
+        [EnableCors("AllowNewDevelopmentEnvironment")]
         [HttpPost]
         public IActionResult Post([FromBody]Series series)
         {
@@ -81,7 +101,7 @@ namespace MediaBay.Controllers
         // For some reason [HttpPut] doesn't work here, and I don't know why, 
         // even though it works this way on ProductController.
 
-        [HttpPut]
+        [HttpPut("{id}")]
 
         public IActionResult Put(int id, [FromBody] Series series)
         {
