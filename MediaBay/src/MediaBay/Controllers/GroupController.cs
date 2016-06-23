@@ -46,8 +46,28 @@ namespace MediaBay.Controllers
             return Ok(productGroups);
         }
 
+        // GET api/group/5
+        [HttpGet("{id}", Name = "GetGroup")]
+        public IActionResult Get(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Group group = _context.Group.Single(m => m.GroupId == id);
+
+            if (group == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(group);
+        }
+
         // When in Postman, never, ever, submit POST or PUT inside [], only {}.
         // POST api/group
+        [EnableCors("AllowNewDevelopmentEnvironment")]
         [HttpPost]
         public IActionResult Post([FromBody]Group newGroup)
         {
@@ -78,7 +98,7 @@ namespace MediaBay.Controllers
 
         // When in Postman, never, ever, submit POST or PUT inside [], only {}.
         // PUT api/group
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Put(int id,[FromBody]Group group)
         {
             if (!ModelState.IsValid)
